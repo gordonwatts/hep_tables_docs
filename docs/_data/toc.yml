@@ -27,8 +27,12 @@
   not_numbered: true
 
 # External link
-- title: GitHub repository
-  url: https://github.com/jupyter/jupyter-book
+- title: hep_tables repository
+  url: https://github.com/gordonwatts/hep_tables
+  external: true
+  not_numbered: true
+- title: dataframe_expressions repository
+  url: https://github.com/gordonwatts/dataframe_expressions
   external: true
   not_numbered: true
 
@@ -40,17 +44,17 @@
 - divider: true
 
 # Add a header and sample content section
-- header: Demo textbook
+- header: hep_tables
 
 # A chapter w/ a collection of sections beneath it
-- title: Features and customization
+- title: Using `hep_tables`
   url: /features/features
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Markdown files
-    url: /features/markdown
-    not_numbered: true
   - title: Jupyter notebooks
     url: /features/notebooks
     not_numbered: true
+
+- title: Discussion
+  url: /discussion
