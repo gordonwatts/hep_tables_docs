@@ -8,4 +8,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - cd ${{ inputs.jekyll_src }} && set && touch dome && ls -l && mkdir _site && ls -l && bundle install && bundle exec jekyll build
+    - cd ${{ inputs.jekyll_src }} && set && touch dome && ls -l && mkdir _site && chmod a+rwx _site && ls -l && bundle install && bundle exec jekyll build
