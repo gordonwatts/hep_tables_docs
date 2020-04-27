@@ -32,7 +32,7 @@ jobs:
     - name: Copy hep_tables notebooks
       run: |
         git clone https://github.com/gordonwatts/hep_tables.git
-        cp hep_tables/notebooks/*.ipynb docs/features
+        cp hep_tables/notebooks/*.ipynb docs/content/features
         rm -rf hep_tables/
         ls docs/content/features
 

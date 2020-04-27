@@ -31,7 +31,7 @@
   url: https://github.com/gordonwatts/hep_tables
   external: true
   not_numbered: true
-  
+
 - title: dataframe_expressions repository
   url: https://github.com/gordonwatts/dataframe_expressions
   external: true
@@ -42,10 +42,10 @@
   search: true
 
 # Divider for meta-pages and content page
-- divider: true
+# - divider: true
 
 # Add a header and sample content section
-- header: hep_tables
+# - header: hep_tables
 
 # A chapter w/ a collection of sections beneath it
 - title: Using `hep_tables`
