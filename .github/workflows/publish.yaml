@@ -26,4 +26,4 @@ jobs:
         pip list
     - name: Build HTML
       run: |
-        jupyter-notebook build docs/
+        jupyter-book build docs/
