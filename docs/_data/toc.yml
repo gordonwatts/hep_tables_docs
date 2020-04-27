@@ -54,16 +54,16 @@
   expand_sections: true
   sections:
   - title: Basic Plotting And Filtering
-    url: /features/01-Plotting-and-Filtering.ipynb
+    url: /features/01-Plotting-and-Filtering
     not_numbered: true
   - title: Functions, Maping, and Leaky Abstractions
-    url: /features/02-Functions.ipynb
+    url: /features/02-Functions
     not_numbered: true
   - title: Extending the Data Model
-    url: /features/03-Alias.ipynb
+    url: /features/03-Alias
     not_numbered: true
   - title: Assocating Different Object
-    url: /features/04-Multiple-Objects.ipynb
+    url: /features/04-Multiple-Objects
     not_numbered: true
 
 - title: Discussion
