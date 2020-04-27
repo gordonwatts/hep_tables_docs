@@ -53,5 +53,5 @@ jobs:
     #     docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -u 0:0 --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build && ls -l docs"
     - name: Push to Docs branches
       run: |
-        ls -l docs
+        ls -R docs
         ghp-import -p -n -f docs/_site
