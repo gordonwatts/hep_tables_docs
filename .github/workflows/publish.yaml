@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - master
+  repository_dispatch:
+    types: [pushed]
 
 env:
   GH_PYTHON_VERSION: 3.7
