@@ -29,6 +29,13 @@ jobs:
         pip install -r requirements.txt
         pip list
 
+    - name: Copy hep_tables notebooks
+      run: |
+        git clone https://github.com/gordonwatts/hep_tables.git
+        cp hep_tables/notebooks/*.ipynb docs/features
+        rm -rf hep_tables/
+        ls docs/features
+
     - name: Build Jekyll Template
       run: |
         jupyter-book build docs/
