@@ -32,8 +32,9 @@ jobs:
       run: |
         jupyter-book build docs/
     - name: Build HTML
+      continue-on-error: true
       run: |
-        docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -p 4000:4000 -u 1000:1000 --entrypoint "/bin/bash"   emdupre/jupyter-book -c "bundle install && bundle exec jekyll serve"
+        docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build"
     - name: Push to Docs branches
       run: |
         ghp-import -p -n -f docs/_site
