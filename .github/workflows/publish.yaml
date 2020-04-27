@@ -40,6 +40,7 @@ jobs:
     - name: Build Jekyll Template
       run: |
         jupyter-book build docs/
+        ls -R
 
     - name: Publish site
       uses: helaili/jekyll-action@2.0.0
