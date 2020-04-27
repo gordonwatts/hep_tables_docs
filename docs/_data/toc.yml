@@ -26,12 +26,11 @@
   url: /intro
   not_numbered: true
 
-# External link
-- title: dataframe_expressions repository
-  url: https://github.com/gordonwatts/dataframe_expressions
-  external: true
-  not_numbered: true
-
+# # External link
+# - title: dataframe_expressions repository
+#   url: https://github.com/gordonwatts/dataframe_expressions
+#   external: true
+#   not_numbered: true
 # External link
 - title: hep_tables repository
   url: https://github.com/gordonwatts/hep_tables
