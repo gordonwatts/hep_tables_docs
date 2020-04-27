@@ -18,14 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    # # Use GitHub Actions' cache to shorten build times and decrease load on servers
-    # - uses: actions/cache@v1
-    #   with:
-    #     path: hep_tables_docs_cache
-    #     key: ${{ runner.os }}-python-${{ defaults.python-version }}--gems-${{ hashFiles('**/Gemfile.lock') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-gems-
-
     - name: Set up Python ${{ env.GH_PYTHON_VERSION }}
       uses: actions/setup-python@v1
       with:
@@ -44,13 +36,9 @@ jobs:
 
     - name: Publish site
       uses: ./actions/jn-build
-      # env:
-      #   JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
       with:
         jekyll_src: 'docs/'
-    # - name: Build HTML
-    #   run: |
-    #     docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -u 0:0 --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build && ls -l docs"
+
     - name: Push to Docs branches
       run: |
         ls -R docs
