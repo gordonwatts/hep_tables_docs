@@ -47,7 +47,7 @@ jobs:
       # env:
       #   JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
       with:
-        jekyll_src: 'docs/_build'
+        jekyll_src: 'docs/'
     # - name: Build HTML
     #   run: |
     #     docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -u 0:0 --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build && ls -l docs"
