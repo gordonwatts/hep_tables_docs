@@ -10,31 +10,46 @@ on:
 
 jobs:
   publish:
-
-    strategy:
-      matrix:
-        platform: [ubuntu-latest]
-        python-version: [3.7]
-    runs-on: ${{ matrix.platform }}
+    runs-on: ubuntu-latest
+    defaults:
+      python-version: 3.7
 
     steps:
     - uses: actions/checkout@master
-    - name: Set up Python ${{ matrix.python-version }}
+
+    # # Use GitHub Actions' cache to shorten build times and decrease load on servers
+    # - uses: actions/cache@v1
+    #   with:
+    #     path: hep_tables_docs_cache
+    #     key: ${{ runner.os }}-python-${{ defaults.python-version }}--gems-${{ hashFiles('**/Gemfile.lock') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-gems-
+
+    - name: Set up Python ${{ defaults.python-version }}
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
         pip list
+
     - name: Build Jekyll Template
       run: |
         jupyter-book build docs/
-    - name: Build HTML
-      run: |
-        docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -u 0:0 --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build && ls -l docs"
-    - name: Push to Docs branches
-      run: |
-        ls -l docs
-        ghp-import -p -n -f docs/_site
+
+    - name: Publish site
+    - uses: helaili/jekyll-action@2.0.0
+      # env:
+      #   JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
+      with:
+        jekyll_src: 'docs/_build'
+    # - name: Build HTML
+    #   run: |
+    #     docker run --rm --security-opt label:disable -v $PWD/docs:/srv/jekyll -u 0:0 --entrypoint "/bin/bash" emdupre/jupyter-book -c "bundle install && bundle exec jekyll build && ls -l docs"
+    # - name: Push to Docs branches
+    #   run: |
+    #     ls -l docs
+    #     ghp-import -p -n -f docs/_site
