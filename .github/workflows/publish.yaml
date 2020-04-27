@@ -33,4 +33,4 @@ jobs:
         jupyter-book build docs/
     - name: Push to Docs branches
       run: |
-        ghp-import -n -p -f docs/_build
+        ghp-import -p -f docs/_build
