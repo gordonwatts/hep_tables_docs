@@ -43,7 +43,7 @@ jobs:
         ls -R
 
     - name: Publish site
-      uses: helaili/jekyll-action@2.0.0
+      uses: ./actions/jn-build
       # env:
       #   JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
       with:

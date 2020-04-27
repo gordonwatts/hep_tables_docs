@@ -1,0 +1,14 @@
+name: 'Build Jupyper Notbook'
+description: 'A GitHub Action to build and publish Jekyll site from the JupyterNotebook to github pages'
+inputs:
+  jekyll_src:  
+    description: 'Directory where the root Jupyter Book lives'
+    required: true
+runs:
+  using: 'docker'
+  image: 'actions/jn-build/Dockerfile'
+  args:
+    - ${{ inputs.jekyll_src }}
+branding:
+  icon: 'book'
+  color: 'blue'
