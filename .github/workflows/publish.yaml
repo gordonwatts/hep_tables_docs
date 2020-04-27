@@ -41,7 +41,7 @@ jobs:
         jupyter-book build docs/
 
     - name: Publish site
-    - uses: helaili/jekyll-action@2.0.0
+      uses: helaili/jekyll-action@2.0.0
       # env:
       #   JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
       with:
