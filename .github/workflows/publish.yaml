@@ -34,7 +34,7 @@ jobs:
         git clone https://github.com/gordonwatts/hep_tables.git
         cp hep_tables/notebooks/*.ipynb docs/features
         rm -rf hep_tables/
-        ls docs/features
+        ls docs/content/features
 
     - name: Build Jekyll Template
       run: |
