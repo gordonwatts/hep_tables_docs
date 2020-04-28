@@ -62,7 +62,7 @@
   - title: Extending the Data Model
     url: /features/03-Alias
     not_numbered: true
-  - title: Assocating Different Object
+  - title: Assocating Different Objects
     url: /features/04-Multiple-Objects
     not_numbered: true
 
