@@ -50,7 +50,7 @@ The fix is to say the second time the `df.electrons` appears, start it again. Ho
 
 Regardless, a clear set of rules must be define to prevent confusion.
 
-## Functions over Sequences
+### Functions over Sequences
 
 Most folks from HEP would agree that `abs(df.jets.eta)` meant a column of the absolute value of jet $\eta$ values. In short, it translates to:
 
@@ -114,6 +114,21 @@ Without violating the requirement that all this be valid python, I'm not sure ho
 Testing and designing the backend implementation for this section probably took the longest - and there are some architecutre decisions I would have made differently had I started with this rather than making simple plots (part of the reason to call this a prototype!).
 
 OTOH, I think everything after the `all` line was very straight forward and easy to understand.
+
+### Type System
+
+Every effort was made to keep the type system out of `dataframe_expressions`. While this means it is fairly easy to write, it also means there is almost not hope for an editor to make suggestions on what the user might type next. This is one of the most high-productivity/help/discovery mechanisms.
+
+Second, the type system in `hep_tables` is mostly heuristics. For example, every leaf is assumed to be a `double` return. This works fine for `df.jets.pt` - the transverse momentum is a `double`. However, it can be a mistake for `df.truth.pdgId`.
+
+Collections are declared (e.g. jets, electrons, etc.). These are hardwired into a dictionary in the code.
+
+The proper way to do this is using python typeshed files. Some of these can be generated automatically (ROOT, for example, has a run time type system built in). But this is a big chunk of work! As a reward, however, it would mean the code generated would be more "correct" and efficient.
+
+Lastly, the type system would allow one to generate errors quickly. Especially in this protoype it is fairly easy to generate an impossible data query. A robust type system would help catch these errors. As would more careful checking in the code!
+
+That said, types are tracked through the code. The system knows if you are counting something that it is looking at integers, and if you are summing over all jet `pt`'s, it knows to use a `double` as an accumulator.
+
 
 ### Integration with common python libraries
 
