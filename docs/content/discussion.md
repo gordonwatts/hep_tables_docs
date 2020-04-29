@@ -96,7 +96,24 @@ I had to think a bit carefully. I had first attempted to write it the definition
 
 I believe the reason this is hard to understand is that things are pulled in from different contexts. For example, the line `return picks[lambda ps: dr(ps, p) < 0.1]` is pulling things from the list of MC electrons (`picks`), which is translated from a column to a single particle (`ps`) - there is one context switch. And then the `dr` is calculated vs this `p`, which is a reconstructed electron that was passed in - a second context switch.
 
-Without violating the requirement that all this be valid python, I'm not sure how to make this better at the moment. I'm happy with this: complex intent is expressed unambiguously, and, for the most part, clearly.
+Lets look at the pseudo code this represents using the old-style code:
+
+```
+for j in jets:
+  near_by = []
+  for t in truth:
+    if dr(j,t) < 0.1:
+      near_by.append(t)
+
+  j['all'] = near_by
+  j['has_match'] = len(near_by) > 0
+  matched_j = j[j.has_match]
+  matched_j.mc = near_by[0]
+```
+
+That code is code I'm comfortable with - I've been writing it since I was a grad student. And I immediately recognize the algorithm. Could we read that and translate it into something that could be executed in a parallel way - in a readable way? The closest I can think of us using python's code introspection tool to grab the AST, and then try to parse that out...
+
+Without violating the requirement that all the `hep_tables` be valid python, I'm not sure how to make this better at the moment. I'm happy with this: complex intent is expressed unambiguously, and, for the most part, clearly.
 
 Testing and designing the backend implementation for this section probably took the longest - and there are some architecture decisions I would have made differently had I started with this rather than making simple plots (part of the reason to call this a prototype!).
 
@@ -137,3 +154,6 @@ There are some "this is not designed to do" things to keep in mind.
 
 The data model has hierarchical data and sequence semantics built in. There are a class of algorithms that are not well suited to these semantics: loops. For example one would be hard pressed to express a tracking algorithm using this syntax. Perhaps more fundamentally, lets say you wanted to know if an electron's parents were $Z$ boson. That implies walking the parent chain until you reach the end or a $Z$ - a loop. This is a limitation baked into the design of the `dataframe_expressions`. The only way around this is to implement a special function that implements this. It is possible one might be able to implement a generic function to cover this class of algorithms. Or piggy back on the `Aggregate` operation.
 
+## Thanks!
+
+Thanks to Giordon Stark and Nick Smith for input!
