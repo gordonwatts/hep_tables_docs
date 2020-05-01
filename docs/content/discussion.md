@@ -99,19 +99,41 @@ I believe the reason this is hard to understand is that things are pulled in fro
 Lets look at the pseudo code this represents using the old-style code:
 
 ```
-for j in jets:
+def find_near_by(j):
+  'Return list of truth particles near by a jet`
   near_by = []
   for t in truth:
     if dr(j,t) < 0.1:
       near_by.append(t)
 
-  j['all'] = near_by
-  j['has_match'] = len(near_by) > 0
+  j['all'] = lambda jet: find_near_by(jet)
+  j['has_match'] = len(j['all']) > 0
   matched_j = j[j.has_match]
   matched_j.mc = near_by[0]
 ```
 
 That code is code I'm comfortable with - I've been writing it since I was a grad student. And I immediately recognize the algorithm. Could we read that and translate it into something that could be executed in a parallel way - in a readable way? The closest I can think of us using python's code introspection tool to grab the AST, and then try to parse that out...
+
+Lets explore a bit further - what if we wrote it using [python's list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) form:
+
+```
+j['all'] = lambda jet: [ps for ps in truth if dr(ps, jet) < 0.1]
+j['has_match'] = len(j['all']) > 0
+matched_j = j[j.has_match]
+matched_j.mc = near_by[0]
+```
+
+That is still readable and if you are comfortable with python's 'listcomp' is pretty readable. One of the key things is the elimination of a layer here. Which could be done in the current `hep_tables` source code:
+
+```
+source['all'] = lambda jet: pick_from[lambda: ps: dr(ps, jet) < 0.1]
+
+source['has_match'] = len(e.all) > 0
+with_assoc = source[source.has_match]
+with_assoc['mc'] = lambda e: e.all.First()
+```
+
+That looks quite nice! Obviously, the `listcomp` expresses what we want to do here better than the lambda code. However, I do not think the `listcomp` code can be parsed properly by python in a way that we can get the ast (e.g. it isn't functional).
 
 Without violating the requirement that all the `hep_tables` be valid python, I'm not sure how to make this better at the moment. I'm happy with this: complex intent is expressed unambiguously, and, for the most part, clearly.
 
