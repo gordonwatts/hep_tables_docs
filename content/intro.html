@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>hep_tables - DataFrames over the wire to servicex</title>
+  <meta name="description" content="# `hep_tables` - DataFrames over the wire to `servicex`This site contains a few demos Jupyter notebooks showing some of the ideas behind the [hep_tables](htt...">
+
+  <link rel="canonical" href="https://gordonwatts.github.io/hep_tables_docs/content/intro.html">
+  <link rel="alternate" type="application/rss+xml" title="hep_tables Demos and Explorations" href="https://gordonwatts.github.io/hep_tables_docs/feed.xml">
+
+  <meta property="og:url"         content="https://gordonwatts.github.io/hep_tables_docs/content/intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="hep_tables - DataFrames over the wire to servicex" />
+<meta property="og:description" content="# `hep_tables` - DataFrames over the wire to `servicex`This site contains a few demos Jupyter notebooks showing some of the ideas behind the [hep_tables](htt..." />
+<meta property="og:image"       content="https://gordonwatts.github.io/hep_tables_docs/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://gordonwatts.github.io/hep_tables_docs/content/intro.html",
+  "headline": "hep_tables - DataFrames over the wire to servicex",
+  "datePublished": "2020-07-11T23:43:39-05:00",
+  "dateModified": "2020-07-11T23:43:39-05:00",
+  "description": "# `hep_tables` - DataFrames over the wire to `servicex`This site contains a few demos Jupyter notebooks showing some of the ideas behind the [hep_tables](htt...",
+  "author": {
+    "@type": "Person",
+    "name": "Gordon Watts (UW/Seattle & IRIS-HEP)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gordonwatts.github.io/hep_tables_docs",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gordonwatts.github.io/hep_tables_docs",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/hep_tables_docs/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/hep_tables_docs/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/hep_tables_docs/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/hep_tables_docs';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/hep_tables_docs/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/hep_tables_docs/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/hep_tables_docs/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/hep_tables_docs/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/hep_tables_docs/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/hep_tables_docs/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">hep_tables Demos and Explorations</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/intro.html"
+        >
+          
+          hep_tables Hierarchical Data with numpy Like Exploration
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="https://github.com/gordonwatts/hep_tables">
+        <a class="c-sidebar__entry"
+          href="https://github.com/gordonwatts/hep_tables"
+        >
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+            1.
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/features/features">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/features/features.html"
+        >
+          
+          Using `hep_tables`
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/01-Plotting-and-Filtering">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/01-Plotting-and-Filtering.html"
+              >
+                
+                Basic Plotting And Filtering
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/02-Functions">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/02-Functions.html"
+              >
+                
+                Functions, Maping, and Leaky Abstractions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/03-Alias">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/03-Alias.html"
+              >
+                
+                Extending the Data Model
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/04-Multiple-Objects">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/04-Multiple-Objects.html"
+              >
+                
+                Assocating Different Objects
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/discussion">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/discussion.html"
+        >
+          
+          Discussion
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/hep_tables_docs/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/hep_tables_docs/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/hep_tables_docs/search.html" class="topbar-right-button" id="search-button">
+    <img src="/hep_tables_docs/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <h1 id="hep_tables---dataframes-over-the-wire-to-servicex"><code class="language-plaintext highlighter-rouge">hep_tables</code> - DataFrames over the wire to <code class="language-plaintext highlighter-rouge">servicex</code></h1>
+
+<p>This site contains a few demos Jupyter notebooks showing some of the ideas behind the <a href="https://github.com/gordonwatts/hep_tables">hep_tables</a> and <a href="https://github.com/gordonwatts/dataframe_expressions">dataframe_expressions</a> packages. The two packages work together to allow easy columnar-like access to hierarchial data when the data processing backend is in an analysis facility and the user is using either Jupyter notebooks or python source files to drive the analysis.</p>
+
+<p>While the code has fairly complete tests, it is certainly of prototype quality and coverage (for features you would need for an actual physics analysis). The feature set has been driven by a a small number of tasks that were meant to see what is possible.</p>
+
+<ul>
+  <li>Basic plots should be easy to make</li>
+  <li>Single object selection cuts using <code class="language-plaintext highlighter-rouge">numpy</code> like slicing</li>
+  <li>Multiple object combinations</li>
+</ul>
+
+<p>This site is organized into a chapter with the demo notebooks showing off this work, and then followed by some discussion. Skipping to the sections that contain code and then coming back to look at the design goals or the discussion about what has been learned so far is a totally appropriate way to approach this site.</p>
+
+<h2 id="design-goals">Design Goals</h2>
+
+<p>There are two approaches to analyzing large datasets. One has the physicist dealing directly with coordinating the backend: scheduling, numbers of parallel processors, etc. The other has the physicist manipulate the dataset as a whole, and then let the backend decide how to split the work up.</p>
+
+<p>Each approach has advantages and disadvantages. The first approach means that the user needs to know details that have nothing to with physics, OTOH, they have complete control and can really take advantage of their knowledge of the shape of the data, the layout of the backend they are running on, etc. The latter approach trades these two - the user manipulates the data, and thinks very little about how the data is processed, but then it is very hard to really take advantage of the layout of the system.</p>
+
+<p>Further, it should be noted that the second approach will use the tools developed for the first approach! And any actual solution will almost certainly not be purely one approach or a second approach.</p>
+
+<p>The combination of <code class="language-plaintext highlighter-rouge">hep_tables</code> and <code class="language-plaintext highlighter-rouge">dataframe_expressions</code> leans more towards the second approach.</p>
+
+<h2 id="where-might-a-prototype-end-up">Where might a prototype end up?</h2>
+
+<p>IRL, one would expect the backend to split the query up, the first part would send to <code class="language-plaintext highlighter-rouge">servicex</code> and get the data, and then the second part would run on that returned data and produce results, something like this: <img src="/hep_tables_docs/content/workflow.png" alt="" /></p>
+
+<p>A quick description of the various bits:</p>
+
+<ul>
+  <li><em>Data Lake</em>: The experiment’s data store. Usually backed by <em>rucio</em>.</li>
+  <li><em>XRootD</em>: The wire-level protocol used to move files</li>
+  <li><em>ServiceX</em>: distributed cloud application that extracts columns of data quickly from experiment’s data. Capable of windowing rendered columns with simplified cuts.</li>
+  <li><em>qastle</em>: Lisp-like language used to specify columns and simplified cuts</li>
+  <li><em>Analysis</em>: The code and collection of services that orchestrates the high level analysis of data (turning ntuples into histograms, running ML, etc.) - likely made up of many parts. Using <code class="language-plaintext highlighter-rouge">awkward</code> and <code class="language-plaintext highlighter-rouge">coffea</code> as the backbone most likely.</li>
+  <li><em>hep_tables</em>: A package that converts a computational graph into commands to <code class="language-plaintext highlighter-rouge">ServiceX</code> and <code class="language-plaintext highlighter-rouge">awkward</code> and <code class="language-plaintext highlighter-rouge">coffea</code> to do the user’s bidding.</li>
+  <li><em>dataframe_expressions</em>: A package that enables the user to express data manipulation in a <code class="language-plaintext highlighter-rouge">numpy</code> like way. It is designed to be transportable over the wire (with a few caveats, see below).</li>
+</ul>
+
+<p>For those of you that know me, you might recognize a few refrains in the demo. I look at HEP data as as sequences. A run consists of a sequence of events. And event consists of different objects - a sequence of electrons, of tracks, of calorimeter cells, etc. Our previous work operated over these sequences using <a href="https://docs.microsoft.com/en-us/dotnet/standard/using-linq">LINQ like operations</a>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">dataframe_expressions</code> and <code class="language-plaintext highlighter-rouge">hep_tables</code> tries to combine the streaming interface and the <code class="language-plaintext highlighter-rouge">numpy</code> interface - playing to python’s strengths where possible, and allowing for simple exensions when one needs to think in terms of streams. The <code class="language-plaintext highlighter-rouge">numpy</code> interface is optimized for tabular data, not hierarchical data. There are some places where it is easy to extend the <code class="language-plaintext highlighter-rouge">numpy</code> semantics to address this, and other places where adopting sequence semantics seems more natural.</p>
+
+<ul>
+  <li>Examples of <code class="language-plaintext highlighter-rouge">numpy</code> like interface: the slicing/masks to select out objects or events; accessing complete columns of data at once. The semantics are extended here, as HEP data is hierarchical.</li>
+  <li>Examples of sequence semantics: the <code class="language-plaintext highlighter-rouge">map</code> function; lambda capture to look at object combinations.</li>
+</ul>
+
+<p>The code is all prototype level. There is no real <em>Analysis</em> component; this work was mostly to see if this approach was feasible, and then collect community comments (please use the IRIS-HEP slack, <a href="https://iris-hep.slack.com/archives/C0109KHNLLT">#hep-tables channel</a>).</p>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>This was build in the context of the <a href="https://iris-hep.org">IRIS-HEP</a> project.</p>
+
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

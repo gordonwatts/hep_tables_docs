@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Assocating Different Objects</title>
+  <meta name="description" content="        Assocating Different Objects    A real analysis rarely deals with objects in isolation - just one electron or one jet. More common are combinations o...">
+
+  <link rel="canonical" href="https://gordonwatts.github.io/hep_tables_docs/features/04-Multiple-Objects.html">
+  <link rel="alternate" type="application/rss+xml" title="hep_tables Demos and Explorations" href="https://gordonwatts.github.io/hep_tables_docs/feed.xml">
+
+  <meta property="og:url"         content="https://gordonwatts.github.io/hep_tables_docs/features/04-Multiple-Objects.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Assocating Different Objects" />
+<meta property="og:description" content="        Assocating Different Objects    A real analysis rarely deals with objects in isolation - just one electron or one jet. More common are combinations o..." />
+<meta property="og:image"       content="https://gordonwatts.github.io/hep_tables_docs/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://gordonwatts.github.io/hep_tables_docs/features/04-Multiple-Objects.html",
+  "headline": "Assocating Different Objects",
+  "datePublished": "2020-07-11T23:43:39-05:00",
+  "dateModified": "2020-07-11T23:43:39-05:00",
+  "description": "        Assocating Different Objects    A real analysis rarely deals with objects in isolation - just one electron or one jet. More common are combinations o...",
+  "author": {
+    "@type": "Person",
+    "name": "Gordon Watts (UW/Seattle & IRIS-HEP)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gordonwatts.github.io/hep_tables_docs",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gordonwatts.github.io/hep_tables_docs",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/hep_tables_docs/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/hep_tables_docs/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/hep_tables_docs/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/hep_tables_docs';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/hep_tables_docs/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/hep_tables_docs/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/hep_tables_docs/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/hep_tables_docs/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/hep_tables_docs/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: "content/features"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/hep_tables_docs/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">hep_tables Demos and Explorations</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/intro.html"
+        >
+          
+          hep_tables Hierarchical Data with numpy Like Exploration
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="https://github.com/gordonwatts/hep_tables">
+        <a class="c-sidebar__entry"
+          href="https://github.com/gordonwatts/hep_tables"
+        >
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+            1.
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/features/features">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/features/features.html"
+        >
+          
+          Using `hep_tables`
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/01-Plotting-and-Filtering">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/01-Plotting-and-Filtering.html"
+              >
+                
+                Basic Plotting And Filtering
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/02-Functions">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/02-Functions.html"
+              >
+                
+                Functions, Maping, and Leaky Abstractions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/03-Alias">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/03-Alias.html"
+              >
+                
+                Extending the Data Model
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/04-Multiple-Objects">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/04-Multiple-Objects.html"
+              >
+                
+                Assocating Different Objects
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/discussion">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/discussion.html"
+        >
+          
+          Discussion
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/hep_tables_docs/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        <a href="/hep_tables_docs/content/features/04-Multiple-Objects.ipynb" download>
+        <button id="interact-button-download" class="interact-button">.ipynb</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/hep_tables_docs/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/hep_tables_docs/search.html" class="topbar-right-button" id="search-button">
+    <img src="/hep_tables_docs/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Assocating Different Objects</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A real analysis rarely deals with objects in isolation - just one electron or one jet. More common are combinations of objects. The <code>hep_tables</code> package does this by leaning primarily on the <code>map</code> function previously described and python's captured variables. Extending the data model also makes it much to work with the multi-object data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell tag_hide_input">
+
+<div class="cell border-box-sizing code_cell rendered tag_hide_input">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">hep_tables</span> <span class="kn">import</span> <span class="n">xaod_table</span><span class="p">,</span> <span class="n">make_local</span><span class="p">,</span> <span class="n">curry</span>
+<span class="kn">from</span> <span class="nn">dataframe_expressions</span> <span class="kn">import</span> <span class="n">user_func</span><span class="p">,</span> <span class="n">define_alias</span>
+<span class="kn">from</span> <span class="nn">func_adl</span> <span class="kn">import</span> <span class="n">EventDataset</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">})</span>
+
+<span class="c1"># Define DeltaR function availible on servicex (see the functions intro for more info)</span>
+<span class="nd">@user_func</span>
+<span class="k">def</span> <span class="nf">DeltaR</span><span class="p">(</span><span class="n">p1_eta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">p1_phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">p2_eta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">p2_phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Calculate the DeltaR between two particles given their `eta` and `phi` locations.</span>
+<span class="sd">    Implemented on the back end.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;This should never be called&#39;</span>
+    
+<span class="n">define_alias</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;ptgev&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">pt</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;urllib3.connectionpool&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell tag_hide_input">
+
+<div class="cell border-box-sizing code_cell rendered tag_hide_input">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">EventDataset</span><span class="p">(</span><span class="s1">&#39;localds://mc15_13TeV:mc15_13TeV.361106.PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee.merge.DAOD_STDM3.e3601_s2576_s2132_r6630_r6264_p2363_tid05630052_00&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">xaod_table</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matching-two-objects">Matching two objects<a class="anchor-link" href="#Matching-two-objects"> </a></h2><p>For this example we are going to match a MC electron to a reconstructed electron.</p>
+<p>First thing is to clean out input. We know from previous sections of this notebook that we want central electrons with $p_T&gt;25$ GeV. We'll do the same for truth particles (<code>abs(pdgId) == 11</code>).</p>
+<p>We need to look at the MC particles, select the electrons, and then match them to electrons in the actual dataset. I've not done this in this dataset before, so I'm going to have to feel my way a bit with a few plots to allow me to understand what is going on.</p>
+<p>First, lets get a plot of the MC electrons. I had to look up the pdg id (embarassing): <code>11</code> - Note that -11 isn't being used here because of a bug that this turned up in the backend (see <a href="https://github.com/iris-hep/func_adl_xAOD/issues/37">bug</a>)!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mc_part</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">TruthParticles</span><span class="p">(</span><span class="s1">&#39;TruthParticles&#39;</span><span class="p">)</span>
+<span class="n">mc_ele</span> <span class="o">=</span> <span class="n">mc_part</span><span class="p">[(</span><span class="n">mc_part</span><span class="o">.</span><span class="n">pdgId</span> <span class="o">==</span> <span class="mi">11</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">mc_part</span><span class="o">.</span><span class="n">pdgId</span> <span class="o">==</span> <span class="o">-</span><span class="mi">11</span><span class="p">)]</span>
+
+<span class="n">eles</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Electrons</span><span class="p">(</span><span class="s1">&#39;Electrons&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">good_e</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="s1">&#39;Good electron particle&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">ptgev</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">eta</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.4</span><span class="p">)</span>
+
+<span class="n">good_eles</span> <span class="o">=</span> <span class="n">eles</span><span class="p">[</span><span class="n">good_e</span><span class="p">]</span>
+<span class="n">good_mc_ele</span> <span class="o">=</span> <span class="n">mc_ele</span><span class="p">[</span><span class="n">good_e</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets plot the $p_T$ just to make sure we are being sane here</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">good_mc_ele_pt</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">good_mc_ele</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+<span class="n">good_eles_pt</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">good_eles</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="ac6295c6-801d-425e-aa26-26fd2c1ef1a1"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ac6295c6-801d-425e-aa26-26fd2c1ef1a1');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "94e32d634b4248ddb3d9f42e317feb49", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="73179318-3cd3-4c74-9982-522b1c15a282"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#73179318-3cd3-4c74-9982-522b1c15a282');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "02b0079b4b7a4e4fa713affb43441dbb", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="546bdbcd-e7f7-4595-8bc8-11716693cfbc"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#546bdbcd-e7f7-4595-8bc8-11716693cfbc');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "64c016c4417049459bff25f681957d07", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="1b987e25-0d4a-45e4-9b4f-468d7a13aba6"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#1b987e25-0d4a-45e4-9b4f-468d7a13aba6');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c4060636cb8741e2b49f126cb944fcec", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+Wall time: 3.06 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">good_mc_ele_pt</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Truth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">good_eles_pt</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reco&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Electron $p_T$ [GeV]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x21367646048&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/04-Multiple-Objects_7_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To do the assocation, the algorithm could be thought of as this:</p>
+<ul>
+<li>Look at each electron</li>
+<li>Look at all the MC electrons</li>
+<li>Find the one closest</li>
+</ul>
+<p>This probably isn't the best algorithm, but it works most of the time. We will have to modify it mostly because the idea of <em>sorting</em> isn't availible at this time in any of the backends we are currently using.</p>
+<p>The approach we will take is to create a generic function that will add a few new "branches" to the electron data model:</p>
+<ul>
+<li><em>hasMC</em> - there is at least one MC electron near by this reconstructed electron</li>
+<li><em>MC</em> - A MC particle close by</li>
+<li><em>all_MC</em> - all MC particles that are within 0.4.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">associate_particles</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">pick_from</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Associate each particle from source with a close by one from the particle list pick_from. Extend source&#39;s data model.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        source            The particles we want to start from</span>
+<span class="sd">        pick_from         For each partcile from source, we&#39;ll find a close by one from pick_form.</span>
+<span class="sd">        name              Naming we can use when we extend the data model.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        with_assoc        The source particles that had a close by match</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">dr</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+        <span class="s1">&#39;short hand for calculating DR between two particles.&#39;</span>
+        <span class="k">return</span> <span class="n">DeltaR</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">eta</span><span class="p">(),</span> <span class="n">p1</span><span class="o">.</span><span class="n">phi</span><span class="p">(),</span> <span class="n">p2</span><span class="o">.</span><span class="n">eta</span><span class="p">(),</span> <span class="n">p2</span><span class="o">.</span><span class="n">phi</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">very_near</span><span class="p">(</span><span class="n">picks</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="s1">&#39;Return all particles in picks that are DR less than 0.1 from p&#39;</span>
+        <span class="k">return</span> <span class="n">picks</span><span class="p">[</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">dr</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">]</span>
+
+    <span class="n">source</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">source_p</span><span class="p">:</span> <span class="n">very_near</span><span class="p">(</span><span class="n">pick_from</span><span class="p">,</span> <span class="n">source_p</span><span class="p">)</span>
+    
+    <span class="n">source</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;has_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">Count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">with_assoc</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="n">source</span><span class="o">.</span><span class="n">has_match</span><span class="p">]</span>
+    <span class="n">with_assoc</span><span class="p">[</span><span class="s1">&#39;mc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">with_assoc</span>
+
+<span class="n">matched</span> <span class="o">=</span> <span class="n">associate_particles</span><span class="p">(</span><span class="n">good_eles</span><span class="p">,</span> <span class="n">good_mc_ele</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The most important line in the function above is this one:</p>
+
+<pre><code>    source[f'all'] = lambda source_p: very_near(pick_from, source_p)</code></pre>
+<p>This defines a new column <code>all</code> using the <code>lambda</code> computed column format. For each particle in <code>source</code>, the function <code>very_near(pick_from, source_p)</code> is computed (in a columnar way!). The <code>very_near</code> function looks at all the MC particles, and windows them by those that are within $\Delta R &lt; 0.1$ - and returns that list.</p>
+<p>Lets look at a few things. First, the $p_T$ of the matched and unmatched electrons.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">matched_ele_pt</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">good_eles</span><span class="p">[</span><span class="n">good_eles</span><span class="o">.</span><span class="n">has_match</span><span class="p">]</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+<span class="n">unmatched_ele_pt</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">good_eles</span><span class="p">[</span><span class="o">~</span><span class="n">good_eles</span><span class="o">.</span><span class="n">has_match</span><span class="p">]</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="27e554b3-2d5b-4186-9b81-bd2f48019d30"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#27e554b3-2d5b-4186-9b81-bd2f48019d30');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "aa2142aed10d448ca351d96134ac1d73", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="2e98a27e-573d-46c2-b961-f6fe9471bbfd"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#2e98a27e-573d-46c2-b961-f6fe9471bbfd');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "b3febdf3050f4160b078f631621cf806", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="5c776940-7f59-4024-ad0a-2ad4886e5db6"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#5c776940-7f59-4024-ad0a-2ad4886e5db6');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8c07e45a0c49453b842bd896166a6d3d", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d59a5fb4-58f8-4440-b4f8-0a6a00bad236"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d59a5fb4-58f8-4440-b4f8-0a6a00bad236');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ff71ea2b97ec4dda9137b610b906fe56", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">matched_ele_pt</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Matched&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">unmatched_ele_pt</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unmatched&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Reco Electron $p_T$ [GeV]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x21367e67b08&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/04-Multiple-Objects_12_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets compare the $p_T$ of matched electrons to their matched MC particle:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pt_matched_mc</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">matched</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+<span class="n">pt_matched_reco</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">matched</span><span class="o">.</span><span class="n">ptgev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="89858520-5d3d-4f2d-a494-515749f9acb9"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#89858520-5d3d-4f2d-a494-515749f9acb9');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "5f8b9d153d0140bf9e412d7e44d8350c", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c8d8de8f-b101-4ddb-9a6d-1b3c5ba111e2"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c8d8de8f-b101-4ddb-9a6d-1b3c5ba111e2');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "22076a04dc854f12b64dd4c6894062b8", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="12f2ff7b-3905-4fa4-9266-9a89faf4d3bd"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#12f2ff7b-3905-4fa4-9266-9a89faf4d3bd');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "18bb311e601b4351a38b0ce5e298d9cc", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="99c34050-fada-4c40-9a84-f6b1adbc29b0"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#99c34050-fada-4c40-9a84-f6b1adbc29b0');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ebcd7e1ed8b1435487718d136cdf9f28", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">pt_matched_mc</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;truth&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">pt_matched_reco</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;reco&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Electron $p_T$ [GeV]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/04-Multiple-Objects_15_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">pt_matched_mc</span><span class="o">-</span><span class="n">pt_matched_reco</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Resolution (truth-reco) [GeV]&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/04-Multiple-Objects_16_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, lets look at the number of particles close by</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_count</span> <span class="o">=</span> <span class="n">make_local</span><span class="p">(</span><span class="n">good_eles</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">Count</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="8cd786ad-b615-4311-abe4-cf284885f15d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#8cd786ad-b615-4311-abe4-cf284885f15d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "96cbc3064ae448aa9f5d177ca8098ad5", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="a3d6f4f7-8598-4606-8b05-e41b9cbcf4a0"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#a3d6f4f7-8598-4606-8b05-e41b9cbcf4a0');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1902881b6d7c493ab30537a01479e417", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">match_count</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of MC matches to each good electron&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zee&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/04-Multiple-Objects_19_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I'm not at all sure what the 2's and 3's are due to - I'm assuming brems or similar objects. This is to investigate at a later time!</p>
+<p>I would note that the function <code>associate_particles</code> didn't just write itself. I had to think a bit carefully. I had first attempted to write it the definition of the column <code>all</code> in a single line. However, it gets very hard to track how many levels deep you are in an array.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/hep_tables_docs/features/03-Alias.html">
+      〈 <span class="u-margin-right-tiny"></span> Extending the Data Model
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/hep_tables_docs/discussion.html">
+      Discussion <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

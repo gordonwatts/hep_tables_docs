@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Discussion</title>
+  <meta name="description" content="# DiscussionBelow is some discussion of things I encountered along the way.## Architectural Decisions### How the two packages work togetherThere isn't really...">
+
+  <link rel="canonical" href="https://gordonwatts.github.io/hep_tables_docs/content/discussion.html">
+  <link rel="alternate" type="application/rss+xml" title="hep_tables Demos and Explorations" href="https://gordonwatts.github.io/hep_tables_docs/feed.xml">
+
+  <meta property="og:url"         content="https://gordonwatts.github.io/hep_tables_docs/content/discussion.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Discussion" />
+<meta property="og:description" content="# DiscussionBelow is some discussion of things I encountered along the way.## Architectural Decisions### How the two packages work togetherThere isn't really..." />
+<meta property="og:image"       content="https://gordonwatts.github.io/hep_tables_docs/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://gordonwatts.github.io/hep_tables_docs/content/discussion.html",
+  "headline": "Discussion",
+  "datePublished": "2020-07-11T23:43:39-05:00",
+  "dateModified": "2020-07-11T23:43:39-05:00",
+  "description": "# DiscussionBelow is some discussion of things I encountered along the way.## Architectural Decisions### How the two packages work togetherThere isn't really...",
+  "author": {
+    "@type": "Person",
+    "name": "Gordon Watts (UW/Seattle & IRIS-HEP)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gordonwatts.github.io/hep_tables_docs",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gordonwatts.github.io/hep_tables_docs",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/hep_tables_docs/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/hep_tables_docs/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/hep_tables_docs/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/hep_tables_docs';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/hep_tables_docs/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/hep_tables_docs/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/hep_tables_docs/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/hep_tables_docs/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/hep_tables_docs/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/hep_tables_docs/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/hep_tables_docs/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/hep_tables_docs/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">hep_tables Demos and Explorations</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/intro.html"
+        >
+          
+          hep_tables Hierarchical Data with numpy Like Exploration
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="https://github.com/gordonwatts/hep_tables">
+        <a class="c-sidebar__entry"
+          href="https://github.com/gordonwatts/hep_tables"
+        >
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+            1.
+          
+          hep_tables repository
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/features/features">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/features/features.html"
+        >
+          
+          Using `hep_tables`
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/01-Plotting-and-Filtering">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/01-Plotting-and-Filtering.html"
+              >
+                
+                Basic Plotting And Filtering
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/02-Functions">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/02-Functions.html"
+              >
+                
+                Functions, Maping, and Leaky Abstractions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/03-Alias">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/03-Alias.html"
+              >
+                
+                Extending the Data Model
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/features/04-Multiple-Objects">
+              <a class="c-sidebar__entry"
+                href="/hep_tables_docs/features/04-Multiple-Objects.html"
+              >
+                
+                Assocating Different Objects
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/discussion">
+        <a class="c-sidebar__entry"
+          href="/hep_tables_docs/discussion.html"
+        >
+          
+          Discussion
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/hep_tables_docs/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/hep_tables_docs/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/hep_tables_docs/search.html" class="topbar-right-button" id="search-button">
+    <img src="/hep_tables_docs/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <h1 id="discussion">Discussion</h1>
+
+<p>Below is some discussion of things I encountered along the way.</p>
+
+<h2 id="architectural-decisions">Architectural Decisions</h2>
+
+<h3 id="how-the-two-packages-work-together">How the two packages work together</h3>
+
+<p>There isn’t really a python library that helps one work with array programming. The code to work with array slicing, manipulation, capturing <code class="language-plaintext highlighter-rouge">numpy</code> calls, etc., is common in several different implementations, but it is tightly integrated with the respective backend.</p>
+
+<p>The first package, <a href="https://github.com/gordonwatts/dataframe_expressions"><code class="language-plaintext highlighter-rouge">dataframe_expressions</code></a> attempts to split that code out. It makes few assumptions about the data being manipulated - instead pushing as many decisions as possible to the backend. The <a href="https://github.com/gordonwatts/hep_tables"><code class="language-plaintext highlighter-rouge">hep_tables</code></a> code <em>renders</em> a dataframe expression into code, actions, etc.</p>
+
+<p>Internally, most of the manipulations are stored using the python <code class="language-plaintext highlighter-rouge">ast</code> package. This was chosen because it is something I understand and am familiar with, and is a rather complete way to represent computational expressions. And since this DSL is the python language - it is a natural fit. That said, it isn’t obvious that a AST is the same thing as a computational compute graph - and something else would better serve.</p>
+
+<h3 id="iterators">Iterators</h3>
+
+<p>Anytime one has <code class="language-plaintext highlighter-rouge">numpy</code> semantics one has to decide where the <em>implied</em> iterators are. For example, <code class="language-plaintext highlighter-rouge">df.jets.pt</code> means:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for event in df:
+  for j in event.jets:
+    pt = j.pt
+    ....
+</code></pre></div></div>
+
+<p>What does <code class="language-plaintext highlighter-rouge">df.jets.pt + df.jets.pt</code> mean? How about <code class="language-plaintext highlighter-rouge">df.electrons.pt + df.jets.pt</code> mean? In the case here, <code class="language-plaintext highlighter-rouge">df.jets.pt + df.jets.pt</code> translates to <code class="language-plaintext highlighter-rouge">2*df.jets.pt</code> and the second case is undefined: I decided it was ambiguous as to what the user meant by that statement (a 2D matrix?).</p>
+
+<p>The implementation is very strict about this - so much so that as this project was finishing off it became clear it would be rather difficult to look at the invariant mass of $Z \rightarrow ee$ if one wanted to pair all electrons found in the event. The natural thing to write is, given a function <code class="language-plaintext highlighter-rouge">invar(p1, p2)</code> that calculates the invariant mass:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>invar_masses = df.electrons.map(lambda e1: df.electrons.map(lambda e2: invar (e1, e2)))
+</code></pre></div></div>
+
+<p>However, the code will spot <code class="language-plaintext highlighter-rouge">df.electrons</code> in two places, and make them the same iterator, and thus the invariant mass will always be the mass of the electrons!</p>
+
+<p>The fix is to say the second time the <code class="language-plaintext highlighter-rouge">df.electrons</code> appears, start it again. However, I am nervous about the long-range implications of that - as I do think if the user writes <code class="language-plaintext highlighter-rouge">df.jets.pt + df.jets.pt</code> they mean to double the jet <code class="language-plaintext highlighter-rouge">pt</code>. A possible solution is to do have this behavior only inside a <code class="language-plaintext highlighter-rouge">lambda</code> function.</p>
+
+<p>Regardless, a clear set of rules must be define to prevent confusion.</p>
+
+<h3 id="functions-over-sequences">Functions over Sequences</h3>
+
+<p>Most folks from HEP would agree that <code class="language-plaintext highlighter-rouge">abs(df.jets.eta)</code> meant a column of the absolute value of jet $\eta$ values. In short, it translates to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for event in df:
+  for j in df.jets:
+    a = abs(j.eta)
+    ...
+</code></pre></div></div>
+
+<p>But what happens if one writes something like <code class="language-plaintext highlighter-rouge">deltaR(df.jets, df.electrons)</code>? This gets back to the same issue of iterators mentioned in the previous section. Is this a 2D matrix? Or something else?</p>
+
+<p>In the prototype I’ve punted on this decision: the above code will generate an error, just as in the case of the <code class="language-plaintext highlighter-rouge">df.jets.pt + df.electrons.pt</code> expression. Even <code class="language-plaintext highlighter-rouge">deltaR(df.jets, df.jets)</code> will currently generate an error, though it is likely we know what the user meant.</p>
+
+<p>In the prototype it is possible to write helper functions to specify explicitly ones intent - using the <code class="language-plaintext highlighter-rouge">map</code> function.</p>
+
+<h2 id="painful-places">Painful Places</h2>
+
+<p>There are some places where I struggled - not just with writing the code behind. I outline some of the user issues I encountered in this section.</p>
+
+<h3 id="nested-expressions">Nested Expressions</h3>
+
+<p>I would note that the function <code class="language-plaintext highlighter-rouge">associate_particles</code> didn’t just write itself. As a reminder:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def associate_particles(source, pick_from):
+    '''
+    Associate each particle from source with a close by one from the particle list pick_from. Extend source's data model.
+    
+    Args:
+        source            The particles we want to start from
+        pick_from         For each particle from source, we'll find a close by one from pick_form.
+        name              Naming we can use when we extend the data model.
+        
+    Returns:
+        with_assoc        The source particles that had a close by match
+    '''
+    def dr(p1, p2):
+        'short hand for calculating DR between two particles.'
+        return DeltaR(p1.eta(), p1.phi(), p2.eta(), p2.phi())
+
+    def very_near(picks, p):
+        'Return all particles in picks that are DR less than 0.1 from p'
+        return picks[lambda ps: dr(ps, p) &lt; 0.1]
+
+    source['all'] = lambda source_p: very_near(pick_from, source_p)
+    
+    source['has_match'] = lambda e: e.all.Count() &gt; 0
+    with_assoc = source[source.has_match]
+    with_assoc['mc'] = lambda e: e.all.First()
+    
+    return with_assoc
+</code></pre></div></div>
+
+<p>I had to think a bit carefully. I had first attempted to write it the definition of the column <code class="language-plaintext highlighter-rouge">all</code> in a single line. However, it gets very hard to track how many levels deep I was in an array. And you could certainly do things by using arrays only - but the data model extension makes it significantly easier to reason about (at least for me). Further, the ability to split things into smaller functions - bite sized bits - seems absolutely crucial to both writing it,and figuring out what it is doing when I return to code like this 6 months after having last looked at it.</p>
+
+<p>I believe the reason this is hard to understand is that things are pulled in from different contexts. For example, the line <code class="language-plaintext highlighter-rouge">return picks[lambda ps: dr(ps, p) &lt; 0.1]</code> is pulling things from the list of MC electrons (<code class="language-plaintext highlighter-rouge">picks</code>), which is translated from a column to a single particle (<code class="language-plaintext highlighter-rouge">ps</code>) - there is one context switch. And then the <code class="language-plaintext highlighter-rouge">dr</code> is calculated vs this <code class="language-plaintext highlighter-rouge">p</code>, which is a reconstructed electron that was passed in - a second context switch.</p>
+
+<p>Lets look at the pseudo code this represents using the old-style code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def find_near_by(j):
+  'Return list of truth particles near by a jet`
+  near_by = []
+  for t in truth:
+    if dr(j,t) &lt; 0.1:
+      near_by.append(t)
+
+  j['all'] = lambda jet: find_near_by(jet)
+  j['has_match'] = len(j['all']) &gt; 0
+  matched_j = j[j.has_match]
+  matched_j.mc = near_by[0]
+</code></pre></div></div>
+
+<p>That code is code I’m comfortable with - I’ve been writing it since I was a grad student. And I immediately recognize the algorithm. Could we read that and translate it into something that could be executed in a parallel way - in a readable way? The closest I can think of us using python’s code introspection tool to grab the AST, and then try to parse that out…</p>
+
+<p>Lets explore a bit further - what if we wrote it using <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">python’s list comprehension</a> form:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>j['all'] = lambda jet: [ps for ps in truth if dr(ps, jet) &lt; 0.1]
+j['has_match'] = len(j['all']) &gt; 0
+matched_j = j[j.has_match]
+matched_j.mc = near_by[0]
+</code></pre></div></div>
+
+<p>That is still readable and if you are comfortable with python’s ‘listcomp’ is pretty readable. One of the key things is the elimination of a layer here. Which could be done in the current <code class="language-plaintext highlighter-rouge">hep_tables</code> source code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source['all'] = lambda jet: pick_from[lambda: ps: dr(ps, jet) &lt; 0.1]
+
+source['has_match'] = len(e.all) &gt; 0
+with_assoc = source[source.has_match]
+with_assoc['mc'] = lambda e: e.all.First()
+</code></pre></div></div>
+
+<p>That looks quite nice! Obviously, the <code class="language-plaintext highlighter-rouge">listcomp</code> expresses what we want to do here better than the lambda code. However, I do not think the <code class="language-plaintext highlighter-rouge">listcomp</code> code can be parsed properly by python in a way that we can get the ast (e.g. it isn’t functional).</p>
+
+<p>Without violating the requirement that all the <code class="language-plaintext highlighter-rouge">hep_tables</code> be valid python, I’m not sure how to make this better at the moment. I’m happy with this: complex intent is expressed unambiguously, and, for the most part, clearly.</p>
+
+<p>Testing and designing the backend implementation for this section probably took the longest - and there are some architecture decisions I would have made differently had I started with this rather than making simple plots (part of the reason to call this a prototype!).</p>
+
+<p>OTOH, I think everything after the <code class="language-plaintext highlighter-rouge">all</code> line was very straight forward and easy to understand.</p>
+
+<h3 id="type-system">Type System</h3>
+
+<p>Every effort was made to keep the type system out of <code class="language-plaintext highlighter-rouge">dataframe_expressions</code>. While this means it is fairly easy to write, it also means there is almost not hope for an editor to make suggestions on what the user might type next. This is one of the most high-productivity/help/discovery mechanisms.</p>
+
+<p>Second, the type system in <code class="language-plaintext highlighter-rouge">hep_tables</code> is mostly heuristics. For example, every leaf is assumed to be a <code class="language-plaintext highlighter-rouge">double</code> return. This works fine for <code class="language-plaintext highlighter-rouge">df.jets.pt</code> - the transverse momentum is a <code class="language-plaintext highlighter-rouge">double</code>. However, it can be a mistake for <code class="language-plaintext highlighter-rouge">df.truth.pdgId</code>.</p>
+
+<p>Collections are declared (e.g. jets, electrons, etc.). These are hardwired into a dictionary in the code.</p>
+
+<p>The proper way to do this is using python typeshed files. Some of these can be generated automatically (ROOT, for example, has a run time type system built in). But this is a big chunk of work! As a reward, however, it would mean the code generated would be more “correct” and efficient.</p>
+
+<p>Lastly, the type system would allow one to generate errors quickly. Especially in this prototype it is fairly easy to generate an impossible data query. A robust type system would help catch these errors. As would more careful checking in the code!</p>
+
+<p>That said, types are tracked through the code. The system knows if you are counting something that it is looking at integers, and if you are summing over all jet <code class="language-plaintext highlighter-rouge">pt</code>’s, it knows to use a <code class="language-plaintext highlighter-rouge">double</code> as an accumulator.</p>
+
+<h3 id="integration-with-common-python-libraries">Integration with common python libraries</h3>
+
+<p>There are a lot of data science libraries out there that it would be nice to be able to re-use. As a canonical example, I’ve used <a href="http://seaborn.pydata.org/">seaborn</a> as a way to reason about this issue. The library takes, most naturally, a <code class="language-plaintext highlighter-rouge">pandas DataFrame</code> object as input, and will make categorical plots. It is a quite powerful way to quickly visualize a large amount of data.</p>
+
+<p>In the Run 4 time frame bringing the data to the users laptop won’t always be an option. This means <code class="language-plaintext highlighter-rouge">seaborn</code> will have to run in the <em>Analysis</em> box, perhaps in an analysis facility. This feels like a great deal of work.</p>
+
+<p>One option is to implement functions explicitly (as was done with the <code class="language-plaintext highlighter-rouge">histogram</code> function in the demo in an earlier section). A second option is to try to automate things, with something like a function decorator. I suspect the final answer will be something in between these two. But this is something that needs to be addressed: there is too much work in the python data science ecosystem to leave behind.</p>
+
+<h3 id="moving-dataframe_expressions-over-the-wire">Moving <code class="language-plaintext highlighter-rouge">dataframe_expressions</code> over the wire</h3>
+
+<p>Raw <code class="language-plaintext highlighter-rouge">python</code> functions are included in the data model. Some of them are evaluated as soon as their are written, but many can’t be implemented as they are written and instead are called as part of the rendering process by <code class="language-plaintext highlighter-rouge">hep_tables</code>. This means that somehow these functions have to be sent over the wire from the user to the Analysis facility. It isn’t obvious how to implement this.</p>
+
+<h2 id="fundamental-limitations">Fundamental Limitations</h2>
+
+<p>There are some “this is not designed to do” things to keep in mind.</p>
+
+<h3 id="loop-algorithms">Loop Algorithms</h3>
+
+<p>The data model has hierarchical data and sequence semantics built in. There are a class of algorithms that are not well suited to these semantics: loops. For example one would be hard pressed to express a tracking algorithm using this syntax. Perhaps more fundamentally, lets say you wanted to know if an electron’s parents were $Z$ boson. That implies walking the parent chain until you reach the end or a $Z$ - a loop. This is a limitation baked into the design of the <code class="language-plaintext highlighter-rouge">dataframe_expressions</code>. The only way around this is to implement a special function that implements this. It is possible one might be able to implement a generic function to cover this class of algorithms. Or piggy back on the <code class="language-plaintext highlighter-rouge">Aggregate</code> operation.</p>
+
+<h2 id="thanks">Thanks!</h2>
+
+<p>Thanks to Giordon Stark and Nick Smith for input!</p>
+
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
